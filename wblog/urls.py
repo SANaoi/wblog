@@ -29,6 +29,8 @@ urlpatterns = [
     # 评论
     path('comment/', include('comment.urls', namespace='comment')),
     path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
+    # notice
+    path('notice/',include('notice.urls', namespace='notice')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

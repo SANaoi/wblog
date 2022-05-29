@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'mptt',
     # 消息通知
     'notifications',
+    'notice',
 
 ]
 
