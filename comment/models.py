@@ -44,7 +44,7 @@ class Comment(MPTTModel):
     #    ordering = ('created',)
 
     class MPTTMeta:
-        order_insertion_by = ['created']
+        order_insertion_by = ['-created']
         
     def __str__(self):
         return self.body[:20]

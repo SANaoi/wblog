@@ -28,7 +28,7 @@ urlpatterns = [
     # path('password-reset/', include('password_reset.urls')),
     # 评论
     path('comment/', include('comment.urls', namespace='comment')),
-    path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
+    path('inbox/notifications/', include('notifications.urls', namespace='notifications')),
     # notice
     path('notice/',include('notice.urls', namespace='notice')),
 ]

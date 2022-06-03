@@ -44,7 +44,7 @@
                           <!-- 新增 -->
                           <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>个人信息</a>
                           <!--通知计数 -->
-                          <a class="dropdown-item" href="#">通知
+                          <a class="dropdown-item" href="{% url "notice:list" %}">>通知
                            {% if unread_count %}
                            <span class="badge badge-danger">{{ unread_count }}</span>
                            {% endif %}
