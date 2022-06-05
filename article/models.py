@@ -72,7 +72,15 @@ class ArticlePost(models.Model):
             resized_image = image.resize((new_x,new_y),Image.ANTIALIAS)
             resized_image.save(self.avatar.path)
         return article
-    
+        
+    def was_created_recently(self):
+        diff = timezone.now() - self.created
+        
+        # if diff.days <= 0 and diff.seconds < 60:
+        if diff.days == 0 and diff.seconds >= 0 and diff.seconds < 60:
+            return True
+        else:
+            return False
     
 
 

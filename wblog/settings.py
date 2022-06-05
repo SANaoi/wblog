@@ -158,15 +158,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # SMTP服务器，改为你的邮箱的smtp!
 EMAIL_HOST = 'smtp.qq.com'
 # 改为你自己的邮箱名！
-EMAIL_HOST_USER = '2962394545@qq.com'
+EMAIL_HOST_USER = '3144347657@qq.com'
 # 你的邮箱密码
-EMAIL_HOST_PASSWORD = 'AMIYAQQ.COM'
+EMAIL_HOST_PASSWORD = 'fahsmvzrqonwdeea'
 # 发送邮件的端口
 EMAIL_PORT = 25
 # 是否使用 TLS
 EMAIL_USE_TLS = True
 # 默认的发件人
-DEFAULT_FROM_EMAIL = '2962394545@qq.com'
+DEFAULT_FROM_EMAIL = '3144347657@qq.com'
 
 
 CKEDITOR_CONFIGS = {
@@ -201,3 +201,56 @@ CKEDITOR_CONFIGS = {
 }
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'verbose',
+        },
+        'file': {
+            'level': 'WARNING',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'when': 'midnight',
+            'backupCount': 30,
+            'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['file', 'mail_admins'],
+            'level': 'WARNING',
+            'propagate': False,
+        },
+    }
+}

@@ -1,6 +1,6 @@
 from bleach import clean
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.models import User
 from matplotlib.pyplot import title
 from article.form import ArticlePostForm
@@ -69,7 +69,7 @@ def article_list(request):
 def article_detail(request, id):
     
     # 取出文章的作者
-    article = ArticlePost.objects.get(id=id)
+    article = get_object_or_404(ArticlePost,id=id)
     # 编辑模板
     # 将markdown语法渲染成html样式
     # article.body = markdown.markdown(article.body,
