@@ -46,7 +46,7 @@ class ArticlePost(models.Model):
     avatar = models.ImageField(upload_to='article/%Y%m%d/',blank=True)
     # 文章标签 '多对多关系'
     tags = TaggableManager(blank=True)
-    
+    likes = models.PositiveIntegerField(default=0)
     class Meta:
         # ordering 指定模型返回的数据的排列顺序
     	# '-created' 表明数据应该以倒序排列
@@ -81,6 +81,9 @@ class ArticlePost(models.Model):
             return True
         else:
             return False
+    
+    
+
     
 
 

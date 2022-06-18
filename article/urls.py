@@ -16,5 +16,7 @@ urlpatterns = [
         name='article_safe_delete'
     ),
     path('article_updata/<int:id>',views.article_updata,name='article_updata'),
-   
+    path('increase_likes/<int:id>/',
+    views.IncreaseLikesView.as_view(),
+    name='increase_likes'),  
 ]

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-6^7f71r@1*!+s!i69da-zqh9r&(-eodqxy^*-7ys%ow25)jw-h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -155,6 +155,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+
+
 # SMTP服务器，改为你的邮箱的smtp!
 EMAIL_HOST = 'smtp.qq.com'
 # 改为你自己的邮箱名！
@@ -202,8 +204,8 @@ CKEDITOR_CONFIGS = {
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-
-LOGGING = {
+#日志
+'''LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
@@ -254,3 +256,7 @@ LOGGING = {
         },
     }
 }
+'''
+
+# 静态文件收集目录
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')

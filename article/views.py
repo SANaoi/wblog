@@ -2,6 +2,7 @@ from bleach import clean
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.models import User
+from django.views import View
 from matplotlib.pyplot import title
 from article.form import ArticlePostForm
 
@@ -223,9 +224,14 @@ def article_updata(request, id):
         }
         return render(request,'article/updata.html',context)
 
-
-
-
+#点赞
+class IncreaseLikesView(View):
+    def post(self, request, *args, **kwargs):
+        article = ArticlePost.objects.get(id=kwargs.get('id'))
+        article.likes += 1
+        article.save()
+        return HttpResponse('success')
+        
 
 
 
