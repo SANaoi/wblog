@@ -1,0 +1,4 @@
+#.gitignore
+*.sqlite3
+*.pyc
+test.txt
