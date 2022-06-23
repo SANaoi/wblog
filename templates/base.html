@@ -15,26 +15,22 @@
     href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
     <!-- 新 Bootstrap4 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static '/node_modules/aplayer/dist/APlayer.min.css' %}">
 </head>
 
 <body>
     <!-- 引入导航栏 -->
     {% include 'header.html' %}
-    <div id="wrapper">
     <!-- 预留具体页面的位置 -->
+    <div id="musicContainer">
     {% block content %}{% endblock content %}
+    </div>
     <div id="push"></div>
     </div>
     <!-- 引入注脚 -->
     {% include 'footer.html' %}
     <!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
-        <script src="{% static 'js/jquery.min.js' %}"></script>
-    <!-- 
-        popper.js 采用 cdn 远程引入，意思是你不需要把它下载到本地。
-        在实际的开发中推荐静态文件尽量都使用 cdn 的形式。 
-        教程采用本地引入是为了让读者了解静态文件本地部署的流程。
-    -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1-lts/dist/umd/popper.min.js"></script> -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
      <!-- 引入layer.js -->
     <script src="{% static 'layer/layer.js' %}"></script>
 
@@ -43,6 +39,19 @@
     
     <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- 音乐播放器 -->
+    <script src="{% static '/node_modules/aplayer/dist/APlayer.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <script src="{% static '/node_modules/jquery-pjax/jquery.pjax.js' %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).pjax('a', '#musicContainer', {
+                fragment: '#musicContainer',
+                timeout: 5000,
+                cache: false
+            });
+        })
+      </script>
     <!-- 返回顶部 -->
     {% include 'back_to_top_func.html' %}
     {% block script %}{% endblock script %}
