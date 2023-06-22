@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+通讯录详细
+{% endblock title %}
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+
+<body class="bg-light">
+
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+          {% if contact.avatar %}
+          <img src="{{ contact.avatar.url }}" alt="avatar" height = 200  class="rounded-circle border border-white">
+          {% else %}
+            <img class="d-block mx-auto mb-4" src="../../static/back_top.png"alt="" >
+          {% endif %}
+        </div>
+        <div class="col-md-12 col-lg-12">
+        <h4 class="mb-3">通讯录</h4>
+        <form class="needs-validation" novalidate
+                method="post" 
+                action="{% url 'private_info:updata' contact.id %}"
+                enctype="multipart/form-data">
+        
+                {% csrf_token %}
+                
+            <div class="col-12">
+                <label for="name" class="form-label">姓名</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text">🥰</span>
+                  <input type="text" class="form-control" id="name" name="name" value={{ contact.name }} placeholder="name" required>
+                <div class="invalid-feedback">
+                    Your name is required.
+                  </div>
+                </div>
+              </div>
+
+            <div class="col-12">
+              <label for="contact_info" class="form-label">联系方式</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" id="contact_info" name="contact_info" value={{ contact.contact_info }} placeholder="contact_info" required>
+              <div class="invalid-feedback">
+                  Your contact_info is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="work_place" class="form-label">工作地点 </label>
+              <input type="email" class="form-control" id="work_place" name="work_place" value={{ contact.work_place }} placeholder="you@example.com">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="city" class="form-label">城市</label>
+              <input type="text" class="form-control" id="city" name="city" value={{ contact.city }} placeholder="City" required>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label" for="customFile">头像<span class="text-muted">(Optional)</span></label>
+              <input type="file" class="form-control-file" id="avatar" name="avatar">
+            </div>
+
+            <div class="col-12">
+              <label for="notes" class="form-label">备注</label>
+              <textarea type="text" class="form-control" id="notes" name="notes" placeholder="Apartment or suite">
+                {{ contact.notes }}
+              </textarea>
+            </div>
+
+            
+
+            <div class="col-md-5">
+              
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+          </div>
+          
+
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+        </form>
+        <div>
+          <br>
+        </div>
+        <button type="button" class="btn btn-danger"  onclick="contact_delete()" >删掉它！</button>
+        <form
+                    style="display:none;"
+                    id = "contact_delete"
+                    action="{% url 'private_info:delete' contact.id %}"
+                    method="POST"
+                >
+                {% csrf_token %}
+                    <button type="submit">发送</button>
+                </form>
+        <script>
+          function contact_delete(){
+            // 调用layer弹窗组件
+            layer.open({
+              title: "确认删除",
+              content: "确认删除用户资料吗？",
+              yes: function(index, layero) {
+                $('form#contact_delete button').click();
+                layer.close(index);
+              },
+            })
+          }
+        </script>
+      </div>
+    </main>
+</div>
+    
+</body>
+
+{% endblock %}

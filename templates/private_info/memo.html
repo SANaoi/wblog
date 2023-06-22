@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% load static %}
+{% load my_filters_and_tags %}
+<!-- 写入 base.html 中定 义的 title -->
+{% block title %}
+    首页
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-auto mr-auto">
+            <form class="form-inline" >
+                <label class="sr-only">memo</label>
+                <input type="text" 
+                    class="form-control mb-2 mr-sm-2" 
+                    name="search" 
+                    placeholder="搜索备忘录..." 
+                    required
+                >
+            </form>
+        </div>
+    </div>
+    <div class="'row">
+        <br>
+        {% for contact in contact_info %}
+            <div class="col-9">
+                <!-- name -->
+                <h4>    
+                    <b>
+                        <a href="{% url 'private_info:memo_detail' contact.id %}"><img src="{% static 'defualt_contacter.png' %}" alt="Bootstrap" width="48" height="48" class="rounded-circle border border-white"></a>
+                        <a href="{% url 'private_info:memo_detail' contact.id %}"
+                        style="color:cadetblue"> <span data-feather="file" class="align-text-bottom"></span>{{ contact.event|slice:'10' }} 
+                        {% if contact.time %}
+                        <span class="col-auto" style="font-size: 16px;">{{ contact.time }}</span>
+                        {% endif %}
+                        <span class="col-auto" style="font-size: 16px;">{{ contact.created }}</span>
+                            
+                    </a>
+                        
+                    </b>
+                    </a>
+                </h4>
+                
+                <!-- 姓名、联系方式、工作地点、城市、备注 -->
+            </div>
+            <br>
+        {% endfor %}
+            <div class="col-4">
+                <a href="{% url 'private_info:memo_create' %}">
+                    添加备忘录
+                </a>
+            </div>         
+    </div>
+</div>
+
+<!-- 分页 -->
+<div class="d-flex justify-content-center">
+    <div class="bd-example-snippet bd-code-snippet">
+        <div class="bd-example-snippet bd-code-snippet "><div class="bd-example">
+            <nav aria-label="Standard pagination example">
+              <ul class="pagination">
+                {% if contact_info.has_previous %}
+                <li class="page-item">
+                <a href="?page={{ contact_info.previous_page_number }}&search={{ search }}" 
+                class="page-link" 
+                aria-label="Previous">&laquo;
+                </a>
+
+                </li>
+                {% endif %}
+
+                {% if contact_info.has_previous %}
+                <li class="page-item"><a class="page-link" 
+                    href="?page={{ contact_info.previous_page_number }}&search={{ search }}">
+                    {{ contact_info.previous_page_number }}
+                    </a>
+                </li>
+                {% endif %}
+
+                <li class="page-item"><a class="page-link" href="#">
+                    {{ contact_info.number }}
+                </a>
+                </li>
+
+                {% if contact_info.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ contact_info.next_page_number }}&search={{ search }}">
+                    {{ contact_info.next_page_number }}
+                    </a>
+                </li>
+                
+
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ contact_info.next_page_number }}&search={{ search }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

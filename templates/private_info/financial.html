@@ -1,0 +1,63 @@
+
+{% extends "base.html" %} {% load static %}
+<!-- 写入 base.html 中定义的 title -->
+{% block title %} 个人财物信息 {% endblock title %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-auto mr-auto">
+            <form class="form-inline" >
+                <label class="sr-only">content</label>
+                <input type="text" 
+                    class="form-control mb-2 mr-sm-2" 
+                    name="search" 
+                    placeholder="搜索..." 
+                    required
+                >
+            </form>
+        </div>
+    </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-12 mr-12">
+        <div class="bd-example bd-code">
+          <div class="bd-example">
+            {% for group in contact_info %}
+          <table class="table table-hover">
+            
+            <thead>
+            <tr>
+              <th scope="col">{{ group.date }}</th>
+              <th scope="col">total_expense:{{ group.expense }}</th>
+              <th scope="col">total_income:{{ group.income }}</th>
+            </tr>
+            </thead>
+        
+            <tbody>
+              {% for record in group.records %}
+              
+              <tr class="table-info">
+                <th scope="row"><a href="{% url 'private_info:financial_detail' record.id %}" style="color: blueviolet;">{{ record.expense_item }}</a></th>
+                <td>{{ record.expense_amount }}</td>
+                <td>{{ record.total_income }}</td>
+              </tr>
+            </a>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% endfor %}
+          </div>
+        </div>
+        <div class="col-4">
+                <a href="{% url 'private_info:financial_create' %}">
+                    添加账单
+                </a>
+            </div>  
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

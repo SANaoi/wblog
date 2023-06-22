@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% load static %}
+<!-- 写入 base.html 中定义的 title -->
+{% block title %} 通讯录 {% endblock title %}
+{% block content %}
+
+<div class="container">
+    <div class="'row">
+        <div class="col-12">
+            <br>
+            <form 
+            method="post" 
+            action="{% url 'private_info:create' %}"
+            enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="form-label" for="customFile">头像</label>
+                    <input type="file" class="form-control-file" id="avatar" name="avatar">
+                  </div>
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="contact_info">联系方式</label>
+                    <input type="text" class="form-control" id="contact_info" name="contact_info">
+                </div>
+                <div class="form-group">
+                    <label for="work_place">工作地点</label>
+                    <input type="text" class="form-control" id="work_place" name="work_place">
+                </div>
+                <div class="form-group">
+                    <label for="city">城市</label>
+                    <input type="text" class="form-control" id="city" name="city">
+                </div>
+                <div class="form-group">
+                    <label for="notes">备注</label>
+                    <textarea type="text" class="form-control" id="notes" name="notes" rows="12">
+                    </textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">完成</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
