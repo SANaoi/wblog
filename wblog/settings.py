@@ -24,7 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6^7f71r@1*!+s!i69da-zqh9r&(-eodqxy^*-7ys%ow25)jw-h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< HEAD
 DEBUG = True
+=======
+DEBUG = False
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'private_info',
+=======
+    'password_reset',
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
     'article',
     'userprofile',
     'comment',
@@ -49,14 +57,22 @@ INSTALLED_APPS = [
     # 消息通知
     'notifications',
     'notice',
+<<<<<<< HEAD
     'password_reset',
+=======
+
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+<<<<<<< HEAD
     # 'django.middleware.csrf.CsrfViewMiddleware',
+=======
+    'django.middleware.csrf.CsrfViewMiddleware',
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -96,7 +112,10 @@ WSGI_APPLICATION = 'wblog.wsgi.application'
 #         'PASSWORD': 'mysql4959',#密码
 #     }
 # }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

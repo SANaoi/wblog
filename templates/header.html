@@ -3,18 +3,30 @@
 <!-- 定义导航栏 -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
+<<<<<<< HEAD
 
         <a class="navbar-brand" href="{% url 'article:article_list' %}">San</a>
     
         <div>
             <ul class="navbar-nav">
 
+=======
+  
+        <!-- 导航栏商标 -->
+        <a class="navbar-brand" href="{% url 'article:article_list' %}">我的博客</a>
+    
+        <!-- 导航入口 -->
+        <div>
+            <ul class="navbar-nav">
+                <!-- 条目 -->
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'article:article_list' %}">文章</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'article:article_create' %}">写文章</a>
                 </li>
+<<<<<<< HEAD
 
                 {% if user.is_authenticated %}
 
@@ -32,12 +44,21 @@
                       </ul>
                     </li>
 
+=======
+                <!-- Django的 if 模板语句 -->
+                {% if user.is_authenticated %}
+                    <!-- 如果用户已经登录，则显示用户名下拉框 -->
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
                     <li class="nav-item dropdown">
                         <a 
                         class="nav-link dropdown-toggle" 
                         href="#" 
                         id="navbarDropdown" 
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<<<<<<< HEAD
+=======
+                        <!-- 新增代码，小红点 -->
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
                           {% if unread_count %}
                           <svg viewBox="0 0 8 8"
                                width="8px"
@@ -49,6 +70,7 @@
                                       ></circle>
                                 </svg>
                           {% endif %}
+<<<<<<< HEAD
                           
                           {% if profile.avatar %}
                           <img src="{{ profile.avatar.url }}" alt="avatar" width="24" height="24" class="rounded-circle border border-white">
@@ -59,17 +81,32 @@
 
                           <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>个人信息</a>
 
+=======
+                          {{ user.username }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <!-- 新增 -->
+                          <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>个人信息</a>
+                          <!--通知计数 -->
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
                           <a class="dropdown-item" href="{% url "notice:list" %}">>通知
                            {% if unread_count %}
                            <span class="badge badge-danger">{{ unread_count }}</span>
                            {% endif %}
                           </a>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
                           <a class="dropdown-item" href="#" onclick="user_delete()">删除用户</a>
                           <a class="dropdown-item" href="{% url 'userprofile:logout' %}">退出登录</a>
                         </div>
                     </li>
+<<<<<<< HEAD
 
+=======
+                <!-- 如果用户未登录，则显示 “登录” -->
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'userprofile:login' %}">登录</a>
@@ -77,7 +114,11 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'userprofile:register' %}">注册</a>
                     </li>                 
+<<<<<<< HEAD
 
+=======
+                <!-- if 语句在这里结束 -->
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
                 {% endif %}
                 {% if user.is_authenticated %}
                 <form
@@ -110,6 +151,7 @@
     </div>
 </nav>
 
+<<<<<<< HEAD
 <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Expand at md</a>
@@ -199,6 +241,8 @@
   }
 </style>
 
+=======
+>>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
 <meting-js
     server="netease"
     fixed="true"
