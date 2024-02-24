@@ -20,10 +20,6 @@ import markdown
 
 # Create your views here.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
 def article_list(request):
     # 根据GET请求中查询条件
     # 返回不同排序的对象数组

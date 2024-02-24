@@ -19,10 +19,7 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 import notifications.urls
-<<<<<<< HEAD
 from userprofile.views import cover
-=======
->>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,13 +32,10 @@ urlpatterns = [
     path('inbox/notifications/', include('notifications.urls', namespace='notifications')),
     # notice
     path('notice/',include('notice.urls', namespace='notice')),
-<<<<<<< HEAD
     # 私人信息
     path('private_info/', include('private_info.urls', namespace='private_info')),
     # 首页
     path('',cover)
-=======
->>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

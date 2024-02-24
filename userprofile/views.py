@@ -119,10 +119,7 @@ def profile_edit(request, id):
         return render(request, 'userprofile/edit.html', context)
     else:
         return HttpResponse("请使用GET或POST请求数据")
-<<<<<<< HEAD
 
 # 首页
 def cover(request):
     return render(request, 'cover.html')
-=======
->>>>>>> 4f4ef326541ee198e31d7224c9f28195571e27e5
