@@ -22,7 +22,6 @@ def contact_list(request):
 
     id = request.user.id
     search = request.GET.get('search')
-    print(search)
     if search:
         all = Contact.objects.filter(
             Q(name__icontains=search))
@@ -233,8 +232,7 @@ def financial_list(request):
         print(group_financial)
         grouped_records.append({
             'date': key,
-            'records': list(group_financial)
-        })
+            'records': list(group_financial)})
 
     for records in grouped_records:
         income = 0
@@ -244,9 +242,7 @@ def financial_list(request):
             expense += record.expense_amount
         records['income'] = income
         records['expense'] = expense
-        
-        
-    print(grouped_records)
+
     contexts = {'contact_info': grouped_records,
                 'search': search,}
     return render(request,'private_info/financial.html', contexts)

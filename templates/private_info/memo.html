@@ -35,9 +35,9 @@
                         <a href="{% url 'private_info:memo_detail' contact.id %}"
                         style="color:cadetblue"> <span data-feather="file" class="align-text-bottom"></span>{{ contact.event|slice:'10' }} 
                         {% if contact.time %}
-                        <span class="col-auto" style="font-size: 16px;">{{ contact.time }}</span>
+                        <span class="col-auto" style="font-size: 16px;">截止时间: {{ contact.time }}</span>
                         {% endif %}
-                        <span class="col-auto" style="font-size: 16px;">{{ contact.created }}</span>
+                        <span class="col-auto" style="font-size: 16px;">创建时间: {{ contact.created }}</span>
                             
                     </a>
                         
